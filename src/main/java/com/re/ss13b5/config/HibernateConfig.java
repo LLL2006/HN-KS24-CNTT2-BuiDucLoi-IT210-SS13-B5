@@ -24,8 +24,8 @@ public class HibernateConfig {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl(env.getProperty("spring.datasource.url"));
-        dataSource.setUsername(env.getProperty("spring.datasource.username"));
-        dataSource.setPassword(env.getProperty("spring.datasource.password"));
+        dataSource.setUsername("root");
+        dataSource.setPassword("LLL2006");
         return dataSource;
     }
 
@@ -33,7 +33,7 @@ public class HibernateConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("com.hospital.pharmacy.model");
+        sessionFactory.setPackagesToScan("com.re.ss13b5.model.entity");
         Properties props = new Properties();
         props.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         props.put("hibernate.show_sql", "true");

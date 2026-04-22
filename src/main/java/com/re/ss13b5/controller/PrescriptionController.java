@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 @Controller
 @RequestMapping("/prescription")
@@ -24,12 +25,15 @@ public class PrescriptionController {
     }
 
     @GetMapping("/add")
-    public String add(Model model) {
+    public String showAddForm(Model model) {
         Prescription p = new Prescription();
         p.setCreatedDate(LocalDate.now());
-        // Giả lập thêm 1 dòng detail trống để nhập liệu
+
+        p.setDetails(new ArrayList<>());
         p.getDetails().add(new PrescriptionDetail());
+
         model.addAttribute("prescription", p);
+
         return "prescription/form";
     }
 
